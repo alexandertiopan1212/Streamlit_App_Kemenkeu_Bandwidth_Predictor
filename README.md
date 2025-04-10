@@ -60,6 +60,6 @@ This project is intended for internal use and educational purposes only. All ins
 
 ## 📸 Screenshots
 
-| Daily Bandwidth Forecast | Time Series Boxplots | ARIMA vs Holt-Winters |
+| Upload Data CSV | Time Series ARIMA | Time Series Holt-Winters |
 |--------------------------|----------------------|------------------------|
 | ![image](https://github.com/user-attachments/assets/dc14a0b5-acb7-467a-a4c1-87f86e832f68) | ![image](https://github.com/user-attachments/assets/dde185fe-3e05-4225-8128-cebdc43bd265) | ![image](https://github.com/user-attachments/assets/68c976ac-8187-4785-a21f-2e8de5632d03) |
