@@ -1,90 +1,58 @@
+# WINTERIMA: Bandwidth Forecasting App for Regional Offices
 
-WINTERIMA - Bandwidth Forecasting App for Kemenkeu Regional Offices
+**WINTERIMA** (Winter + ARIMA) is a Streamlit-based forecasting tool designed for the Indonesian Ministry of Finance to analyze and predict regional office bandwidth needs using time series techniques (ARIMA and Holt-Winters). The app is tailored for network infrastructure teams to plan bandwidth upgrades based on actual peak usage trends.
 
-WINTERIMA is a Streamlit-based forecasting dashboard developed to help BPPK - Kementerian Keuangan Republik Indonesia predict bandwidth capacity needs across regional offices using ARIMA and Holt-Winters methods. This project enables interactive exploration, time series analysis, and future capacity forecasting from historical utilization data.
+## 🚀 Features
 
-==================================================
-🚀 Features
-==================================================
-- 📁 Data Upload Interface
-  Upload and parse Excel-based historical bandwidth utilization reports (Mei–November 2023).
+- 📁 Upload Excel datasets with multi-dimensional headers (location, service, link, bandwidth)
+- 📊 Visualize daily bandwidth usage, including:
+  - Line charts
+  - Box plots (daily, weekly, monthly, quarterly)
+- 🔍 Time Series Analysis Workflow:
+  - Augmented Dickey-Fuller Test (ADF)
+  - Log transform and smoothing
+  - Decomposition (trend, seasonal, residual)
+  - ACF & PACF plotting
+- 🧠 Forecasting Models:
+  - **ARIMA**: Custom (p, d, q) + interactive ADF + decomposition
+  - **Holt-Winters**: Additive smoothing (level + slope control)
+- 📈 Forecast future bandwidth needs (user-defined period)
+- 📦 Built-in RMSE and MAPE error metrics for model evaluation
 
-- 📈 Interactive Time Series Visualization
-  Analyze peak/average usage by location, service, and link across various time granularities (daily, weekly, monthly, quarterly).
+## 📁 Project Structure
 
-- 🔍 Stationarity Test & Decomposition
-  Automatically test for stationarity using Augmented Dickey-Fuller (ADF), apply log transformation, and decompose trends, seasonality, and residuals.
+```
+📦Streamlit_App_Kemenkeu_Bandwidth_Predictor
+ ┣ 📜main.py
+ ┣ 📜requirements.txt
+ ┣ 📜Utilisasi Harian BPPK Mei - November 2023 (2).xlsx
+ ┗ 📜Seal_of_the_Ministry_of_Finance_of_the_Republic_of_Indonesia.svg.png
+```
 
-- 🧠 Model Training
-  Train ARIMA and Holt-Winters models on selected time series, complete with:
-    - ACF/PACF analysis
-    - RMSE & MAPE evaluation metrics
-    - Adjustable model parameters (p, d, q / smoothing level)
+## 📊 Technologies Used
 
-- 📊 Forecasting Module
-  Predict future bandwidth usage over a specified period using the trained model.
-
-==================================================
-📂 File Structure
-==================================================
-📦 Streamlit_App_Kemenkeu_Bandwidth_Predictor
-├── main.py                      # Main Streamlit application
-├── requirements.txt             # Python dependencies
-├── Utilisasi Harian BPPK...xlsx # Sample input dataset
-├── Seal_of_the_Ministry...png   # App logo
-└── README.txt                   # Documentation
-
-==================================================
-🛠️ Tech Stack
-==================================================
-- Python
+- Python (Pandas, Numpy)
 - Streamlit
-- pandas, numpy
-- statsmodels
-- scikit-learn
-- plotly, matplotlib
+- Plotly for interactive visualization
+- statsmodels (ARIMA, ADF Test, Seasonal Decompose)
+- sklearn (MAPE & RMSE)
+- ExponentialSmoothing (Holt-Winters)
+- pmdarima (auto ARIMA backend)
 
-==================================================
-📦 Installation
-==================================================
-1. Clone the repository:
-   git clone https://github.com/alexandertiopan1212/Streamlit_App_Kemenkeu_Bandwidth_Predictor.git
-   cd Streamlit_App_Kemenkeu_Bandwidth_Predictor
+## 🛠 How to Run
 
-2. Install dependencies:
-   pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+streamlit run main.py
+```
 
-3. Run the app:
-   streamlit run main.py
+## 📌 Notes
 
-==================================================
-📊 Sample Dataset Format
-==================================================
-| Lokasi | Layanan | Link | Bandwidth (Mbps) | 01-May-2023 | ... | 30-Nov-2023 |
-|--------|---------|------|------------------|--------------|-----|--------------|
-| Kanwil X | Internet | FO-01 | 20 | 1234 | ... | 1823 |
+- Excel template must follow two-sheet structure:
+  - Sheet1: metadata (location, service, link, bandwidth)
+  - Sheet2: actual bandwidth values with 4-row stacked format (Tx Peak, Tx Avg, Rx Peak, Rx Avg)
+- Works best for daily-level bandwidth logging from multiple offices.
 
-Sheet 1 contains metadata, Sheet 2 contains utilization data.
+## 🪪 License
 
-==================================================
-🧪 Example Output
-==================================================
-- Time series bandwidth usage over time
-- Boxplots per day/week/month/quarter
-- Forecast plot of future utilization
-- Model evaluation: RMSE, MAPE
-
-==================================================
-🪪 License
-==================================================
-This project is open-source and free to use under the MIT License.
-Developed for research and internal planning purposes within the Ministry of Finance (BPPK).
-
-==================================================
-📬 Contact
-==================================================
-Developer: Alexander Tiopan
-Email: alexandertiopan1212@gmail.com
-LinkedIn: linkedin.com/in/alexandertiopan
-
-Built with 💻 and ❤️ for better public sector decision making.
+This project is intended for internal use and educational purposes only. All institutional branding belongs to the Indonesian Ministry of Finance.
